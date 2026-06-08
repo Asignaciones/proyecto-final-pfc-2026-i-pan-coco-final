@@ -1,5 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/XgbWPkKq)
+
 # Proyecto Final — Asignación Óptima de Aulas
+
 ## Fundamentos de Programación Funcional y Concurrente
 
 **Fecha de entrega:** Miércoles, 03 de junio de 2026 a las 17:58:59
@@ -10,11 +12,12 @@
 
 ## Integrantes del grupo
 
-| Nombre completo | Código | Correo institucional |
-|-----------------|--------|----------------------|
-| [Estudiante 1]  |        |                      |
-| [Estudiante 2]  |        |                      |
-| [Estudiante 3]  |        |                      |
+
+| Nombre completo         | Código | Correo institucional                   |
+| ----------------------- | ------- | -------------------------------------- |
+| Rafael Steven Izquierdo | 2459696 | rafael.izquierdo@correounivalle.edo.co |
+| [Estudiante 2]          |         |                                        |
+| [Estudiante 3]          |         |                                        |
 
 **Obligatorio:** editar esta tabla con los datos reales de todos los integrantes.
 Si un integrante no aparece aquí, su nota individual será 0.0.
