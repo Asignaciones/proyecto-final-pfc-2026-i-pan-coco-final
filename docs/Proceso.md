@@ -1,6 +1,6 @@
 # Informe de Proceso
 
-## Proyecto Final — Fundamentos de Programación Funcional y Concurrente
+## Proyecto Final 
 
 ---
 
