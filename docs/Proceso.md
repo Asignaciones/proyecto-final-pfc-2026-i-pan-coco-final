@@ -1,6 +1,5 @@
 # Informe de Proceso
 
-## Proyecto Final 
 
 ---
 
