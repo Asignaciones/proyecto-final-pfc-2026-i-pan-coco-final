@@ -105,7 +105,7 @@ object AsignacionAulasPar {
     // Recolectamos y concatenamos en orden
     tareas.flatMap(_.join())
   }
-  
+
   def asignacionOptimaPar(cursos: Cursos, aulas: Aulas, d: Distancias,
                           w: Pesos): (Asignacion, Int) = {
     val n           = cursos.length
