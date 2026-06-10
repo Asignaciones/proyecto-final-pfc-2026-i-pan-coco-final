@@ -26,6 +26,13 @@ class AsignacionAulasTest extends AnyFunSuite {
   test("solapan: cursos adyacentes [0,4) y [4,8) no se solapan") {
     assert(!solapan(("A", 0, 4, 10), ("B", 4, 8, 10)))
   }
+  test("solapan: cursos identicos [4,8) y [4,8) se solapan") {
+    assert(solapan(("X", 4, 8, 10), ("Y", 4, 8, 10)))
+  }
+
+  test("solapan: un curso contenido dentro de otro [2,10) y [4,6) se solapan") {
+    assert(solapan(("X", 2, 10, 10), ("Y", 4, 6, 10)))
+  }
 
   // choques
   test("choques: asignacion [0,0,1] tiene 1 choque (M01 y M02 en E101)") {
@@ -35,10 +42,22 @@ class AsignacionAulasTest extends AnyFunSuite {
   test("choques: asignacion [0,1,0] no tiene choques") {
     assert(choques(c1, Vector(0, 1, 0)) == 0)
   }
+  test("choques: tres cursos todos en la misma aula con solapamientos produce 2 choques") {
+    // M01[4,8), M02[6,10) y M03[7,12) en aula 0 → pares (M01,M02), (M01,M03), (M02,M03) = 3 choques
+    val cursos = Vector(("M01", 4, 8, 25), ("M02", 6, 10, 30), ("M03", 7, 12, 20))
+    assert(choques(cursos, Vector(0, 0, 0)) == 3)
+  }
+
 
   // capacidadFallida
   test("capacidadFallida: asignacion [0,0,1] no falla capacidad") {
     assert(capacidadFallida(c1, a1, Vector(0, 0, 1)) == 0)
+  }
+  test("capacidadFallida: curso con mas estudiantes que capacidad del aula cuenta como fallo") {
+    // F03 tiene 50 estudiantes, S201 tiene capacidad 45 → 1 fallo
+    val cursos2 = Vector(("F01", 0, 4, 40), ("F02", 4, 8, 25), ("F03", 8, 12, 50), ("F04", 12, 16, 15))
+    val aulas2  = Vector(("S201", 45), ("S202", 30))
+    assert(capacidadFallida(cursos2, aulas2, Vector(0, 1, 0, 1)) == 1)
   }
 
   // desperdicio
