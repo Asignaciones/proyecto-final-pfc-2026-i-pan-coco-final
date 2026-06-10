@@ -6,11 +6,10 @@ import AsignacionAulas._
 object AsignacionAulasPar {
 
   def choquesPar(cursos: Cursos, a: Asignacion): Int = {
-    val n    = cursos.length
-    val mid  = n / 2
+    val n       = cursos.length
+    val mid     = n / 2
     val indices = cursos.indices.toVector
 
-    // Cuenta los choques para los índices i en el rango [desde, hasta)
     def choquesRango(desde: Int, hasta: Int): Int =
       (desde until hasta).toVector.flatMap { i =>
         indices
@@ -49,8 +48,6 @@ object AsignacionAulasPar {
     val n   = cursos.length
     val mid = n / 2
 
-    // Obtiene los índices de cursos asignados en [desde, hasta), ordenados
-    // por hora de inicio.
     def indicesOrdenados(desde: Int, hasta: Int): Vector[Int] =
       (desde until hasta).toVector
         .filter(i => a(i) >= 0)
@@ -61,7 +58,6 @@ object AsignacionAulasPar {
       indicesOrdenados(mid, n)
     )
 
-    // Merge de las dos secuencias ordenadas por iniCurso
     def merge(xs: Vector[Int], ys: Vector[Int]): Vector[Int] =
       (xs, ys) match {
         case (Vector(), _) => ys
@@ -75,7 +71,6 @@ object AsignacionAulasPar {
 
     val ordenados = merge(izq, der)
 
-    // Suma de distancias entre aulas consecutivas
     if (ordenados.length < 2) 0
     else
       ordenados.zip(ordenados.tail).map { case (i, j) =>
@@ -83,10 +78,8 @@ object AsignacionAulasPar {
       }.sum
   }
 
+  // ← único cambio real: eliminado el `return`
   def generarAsignacionesPar(n: Int, m: Int): Vector[Asignacion] = {
-    if (n == 0) return Vector(Vector.empty)
-
-    // Genera todas las asignaciones de longitud k con aulas en 0..m-1
     def gen(k: Int): Vector[Asignacion] =
       if (k == 0) Vector(Vector.empty)
       else {
@@ -94,26 +87,25 @@ object AsignacionAulasPar {
         (0 until m).toVector.flatMap(v => sub.map(v +: _))
       }
 
-    // Lanzamos una tarea por cada valor posible del primer curso
-    val tareas = (0 until m).toVector.map { v =>
-      task {
-        val resto = gen(n - 1)          // asignaciones de los n-1 cursos restantes
-        resto.map(v +: _)               // anteponemos v
+    if (n == 0) Vector(Vector.empty)
+    else {
+      val tareas = (0 until m).toVector.map { v =>
+        task {
+          val resto = gen(n - 1)
+          resto.map(v +: _)
+        }
       }
+      tareas.flatMap(_.join())
     }
-
-    // Recolectamos y concatenamos en orden
-    tareas.flatMap(_.join())
   }
 
   def asignacionOptimaPar(cursos: Cursos, aulas: Aulas, d: Distancias,
                           w: Pesos): (Asignacion, Int) = {
-    val n           = cursos.length
-    val m           = aulas.length
-    val candidatas  = generarAsignacionesPar(n, m)
-    val mid         = candidatas.length / 2
+    val n          = cursos.length
+    val m          = aulas.length
+    val candidatas = generarAsignacionesPar(n, m)
+    val mid        = candidatas.length / 2
 
-    // Mínimo de costo en un subvector de candidatas
     def minimoEn(sub: Vector[Asignacion]): (Asignacion, Int) =
       sub.map(a => (a, costoAsignacion(cursos, aulas, d, a, w)))
         .minBy(_._2)
