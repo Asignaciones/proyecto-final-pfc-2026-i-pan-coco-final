@@ -13,11 +13,12 @@
 ## Integrantes del grupo
 
 
-| Nombre completo         | Código | Correo institucional                    |
-|-------------------------|  | -------------------------------------- |
-| Rafael Steven Izquierdo | 2459696 | rafael.izquierdo@correounivalle.edu.co |
-| Walter Lozano Pelaez    | 2459487 | walter.lozano@correounivalle.edu.co    |
-| Kevin Smith Bermeo Rico | 2477363 | Kevin.bermeo@correounivalle.edu.co     |
+| Nombre completo           | Código  | Correo institucional                            |
+|-------------------------  |         | ------------------------------------------------|
+| Rafael Steven Izquierdo   | 2459696 | rafael.izquierdo@correounivalle.edu.co          |
+| Walter Lozano Pelaez      | 2459487 | walter.lozano@correounivalle.edu.co             |
+| Sebastian Cardona Murillo | 2459714 | sebastian.cardona.murillo@correounivalle.edu.co |
+| Kevin Smith Bermeo Rico   | 2477363 | Kevin.bermeo@correounivalle.edu.co              |
 
 **Obligatorio:** editar esta tabla con los datos reales de todos los integrantes.
 Si un integrante no aparece aquí, su nota individual será 0.0.
