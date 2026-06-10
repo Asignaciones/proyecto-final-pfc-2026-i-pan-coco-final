@@ -1,8 +1,6 @@
 # Informe de Corrección — Asignación Óptima de Aulas
 
-> **Integrantes del grupo:** _(completar con nombres completos, códigos institucionales y correos)_
 
----
 
 ## Tabla de contenido
 
