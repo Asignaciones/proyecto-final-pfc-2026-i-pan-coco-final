@@ -82,17 +82,26 @@ object AsignacionAulasPar {
         d(a(i))(a(j))
       }.sum
   }
-
-  def generarAsignacionesPar(n: Int, m: Int): Vector[Asignacion] = {
-    if (n == 0) return Vector(Vector.empty)
-
-    // Genera todas las asignaciones de longitud k con aulas en 0..m-1
+  
+ def generarAsignacionesPar(n: Int, m: Int): Vector[Asignacion] = {
     def gen(k: Int): Vector[Asignacion] =
       if (k == 0) Vector(Vector.empty)
       else {
         val sub = gen(k - 1)
         (0 until m).toVector.flatMap(v => sub.map(v +: _))
       }
+ 
+    if (n == 0) Vector(Vector.empty)
+    else {
+      val tareas = (0 until m).toVector.map { v =>
+        task {
+          val resto = gen(n - 1)
+          resto.map(v +: _)
+        }
+      }
+      tareas.flatMap(_.join())
+    }
+  }
 
     // Lanzamos una tarea por cada valor posible del primer curso
     val tareas = (0 until m).toVector.map { v =>
