@@ -1,5 +1,6 @@
 # Informe de Proceso
 
+## Proyecto Final — Fundamentos de Programación Funcional y Concurrente
 
 ---
 
@@ -85,7 +86,7 @@ solapan(c1, c3)
 
 Cuenta el número de pares $(i,j)$ con $i < j$ tales que $\alpha_i = \alpha_j \geq 0$ y los cursos $i$ y $j$ se solapan:
 
-$$\text{CH}^\alpha_C = \bigl|\{(i,j) \mid 0 \le i < j < n,\;\alpha_i = \alpha_j,\;\alpha_i \ge 0,\;c_i \text{ solapa con } c_j\}\bigr|$$
+$$\text{CH}^\alpha_C = |\{(i,j) \mid 0 \le i < j < n,\;\alpha_i = \alpha_j,\;\alpha_i \ge 0,\;c_i \text{ solapa con } c_j\}|$$
 
 ### Implementación
 
@@ -140,7 +141,7 @@ flowchart TD
 
 Cuenta los cursos asignados cuya aula tiene capacidad insuficiente:
 
-$$\text{CF}^\alpha_{C,A} = \bigl|\{i \mid \alpha_i \ge 0,\;\text{cap}^A_{\alpha_i} < \text{est}^C_i\}\bigr|$$
+$$\text{CF}^\alpha_{C,A} = |\{i \mid \alpha_i \ge 0,\;\text{cap}^A_{\alpha_i} < \text{est}^C_i\}|$$
 
 ### Implementación
 
@@ -188,7 +189,7 @@ flowchart TD
 
 Suma la diferencia positiva entre la capacidad del aula y el número de estudiantes para los cursos asignados con capacidad suficiente:
 
-$$\text{DE}^\alpha_{C,A} = \sum_{\substack{i=0\\\alpha_i \ge 0}}^{n-1} \max\!\bigl(\text{cap}^A_{\alpha_i} - \text{est}^C_i,\;0\bigr)$$
+$$\text{DE}^\alpha_{C,A} = \sum_{\substack{i=0\\\alpha_i \ge 0}}^{n-1} \max(\text{cap}^A_{\alpha_i} - \text{est}^C_i,\;0)$$
 
 Cuando $\text{cap}^A_{\alpha_i} < \text{est}^C_i$, el término es $0$ y la penalización corresponde a `capacidadFallida`.
 
@@ -447,7 +448,7 @@ flowchart TD
 
 **`minBy` como fold:**
 
-$$\text{minBy}([x_0,\ldots,x_{k-1}]) = \text{foldLeft}(x_0)\bigl\{(acc,\,x) \Rightarrow \text{if}\;x._2 < acc._2\;\text{then}\;x\;\text{else}\;acc\bigr\}$$
+$$\text{minBy}([x_0,\ldots,x_{k-1}]) = \text{foldLeft}(x_0)\{(acc,\,x) \Rightarrow \text{if}\;x._2 < acc._2\;\text{then}\;x\;\text{else}\;acc\}$$
 
 ---
 
@@ -703,7 +704,12 @@ flowchart TD
 
 Versión paralela de `asignacionOptima`. Genera el espacio de asignaciones con `generarAsignacionesPar` y divide la búsqueda del mínimo en dos mitades lanzadas con `parallel`. Cada mitad evalúa su sub-vector y retorna el par `(asignación, costo)` mínimo; finalmente se comparan los dos mínimos parciales.
 
-$$\alpha^* = \begin{cases} \alpha^*_\text{izq} & \text{si } \text{CT}(\alpha^*_\text{izq}) \le \text{CT}(\alpha^*_\text{der}) \\ \alpha^*_\text{der} & \text{en otro caso} \end{cases}$$
+La selección final es:
+
+- Si `CT(minIzq) <= CT(minDer)` → se retorna `minIzq`
+- En otro caso → se retorna `minDer`
+
+Esto garantiza que el resultado es idéntico al de `asignacionOptima`, ya que todo el espacio de asignaciones queda cubierto entre las dos mitades.
 
 ### Implementación
 
