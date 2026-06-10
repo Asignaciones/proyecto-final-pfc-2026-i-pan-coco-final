@@ -1,6 +1,5 @@
 # Conclusiones
 
-> **Integrantes:** _(completar con nombres completos, códigos institucionales y correos)_
 
 ---
 
