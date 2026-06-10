@@ -1,28 +1,13 @@
 # Informe de Corrección — Asignación Óptima de Aulas
 
 
+---
 
 ## Tabla de contenido
 
-- [1. Argumentación sobre la corrección](#1-argumentación-sobre-la-corrección)
-  - [1.1. `solapan`](#11-solapan)
-  - [1.2. `choques`](#12-choques)
-  - [1.3. `capacidadFallida`](#13-capacidadfallida)
-  - [1.4. `desperdicio`](#14-desperdicio)
-  - [1.5. `movilidad`](#15-movilidad)
-  - [1.6. `costoAsignacion`](#16-costoasignacion)
-  - [1.7. `generarAsignaciones`](#17-generarasignaciones)
-  - [1.8. `asignacionOptima`](#18-asignacionoptima)
-- [2. Casos de prueba](#2-casos-de-prueba)
-  - [2.1. `solapan`](#21-solapan----5-casos)
-  - [2.2. `choques`](#22-choques----5-casos)
-  - [2.3. `capacidadFallida`](#23-capacidadfallida----5-casos)
-  - [2.4. `desperdicio`](#24-desperdicio----5-casos)
-  - [2.5. `movilidad`](#25-movilidad----5-casos)
-  - [2.6. `costoAsignacion`](#26-costoasignacion----5-casos)
-  - [2.7. `generarAsignaciones`](#27-generarasignaciones----5-casos)
-  - [2.8. `asignacionOptima`](#28-asignacionoptima----5-casos)
-- [3. Resumen de corrección](#3-resumen-de-corrección)
+1. [Argumentación sobre la corrección](#1-argumentación-sobre-la-corrección)
+2. [Casos de prueba](#2-casos-de-prueba)
+3. [Resumen de corrección](#3-resumen-de-corrección)
 
 ---
 
