@@ -14,7 +14,7 @@
 
 
 | Nombre completo           | Código  | Correo institucional                            |
-|-------------------------  |         | ------------------------------------------------|
+|---------------------------|---------|------------------------------------------------|
 | Rafael Steven Izquierdo   | 2459696 | rafael.izquierdo@correounivalle.edu.co          |
 | Walter Lozano Pelaez      | 2459487 | walter.lozano@correounivalle.edu.co             |
 | Sebastian Cardona Murillo | 2459714 | sebastian.cardona.murillo@correounivalle.edu.co |
