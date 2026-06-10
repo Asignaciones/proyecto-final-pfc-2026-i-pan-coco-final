@@ -118,22 +118,41 @@ object AsignacionAulas {
    * entre aulas de cursos consecutivos.
    */
   def movilidad(cursos: Cursos, aulas: Aulas, d: Distancias,
-                a: Asignacion): Int = ???
+                a: Asignacion): Int = {
+    val asignados = cursos.indices.toVector
+      .filter(i => a(i) >= 0)
+      .sortBy(i => iniCurso(cursos(i)))
+    asignados.zip(asignados.tail)
+      .map { case (i, j) => d(a(i))(a(j)) }
+      .sum
+  }
 
   /** Costo total: w_CH * CH + w_CF * CF + w_DE * DE + w_MV * MV. */
   def costoAsignacion(cursos: Cursos, aulas: Aulas, d: Distancias,
-                      a: Asignacion, w: Pesos): Int = ???
+                      a: Asignacion, w: Pesos): Int =
+    w._1 * choques(cursos, a) +
+    w._2 * capacidadFallida(cursos, aulas, a) +
+    w._3 * desperdicio(cursos, aulas, a) +
+    w._4 * movilidad(cursos, aulas, d, a)
 
   /**
    * Genera todas las asignaciones completas posibles: vectores en {0,..,m-1}^n.
    * El tamaño del resultado es m^n.
    */
-  def generarAsignaciones(n: Int, m: Int): Vector[Asignacion] = ???
+  def generarAsignaciones(n: Int, m: Int): Vector[Asignacion] = {
+    if (n == 0) Vector(Vector.empty)
+    else generarAsignaciones(n - 1, m)
+      .flatMap(a => (0 until m).toVector.map(j => a :+ j))
+  }
+
 
   /**
    * Devuelve la asignación de mínimo costo y su costo.
    * Usa generarAsignaciones para explorar el espacio.
    */
   def asignacionOptima(cursos: Cursos, aulas: Aulas, d: Distancias,
-                       w: Pesos): (Asignacion, Int) = ???
+                       w: Pesos): (Asignacion, Int) = {generarAsignaciones(cursos.length, aulas.length)
+    .map(a => (a, costoAsignacion(cursos, aulas, d, a, w)))
+    .minBy(_._2)
+}
 }
