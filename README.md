@@ -13,10 +13,10 @@
 ## Integrantes del grupo
 
 
-| Nombre completo         | Código | Correo institucional                   |
+| Nombre completo         | Código | Correo institucional                    |
 | ----------------------- | ------- | -------------------------------------- |
-| Rafael Steven Izquierdo | 2459696 | rafael.izquierdo@correounivalle.edo.co |
-| [Estudiante 2]          |         |                                        |
+| Rafael Steven Izquierdo | 2459696 | rafael.izquierdo@correounivalle.edu.co |
+| Walter Lozano Pelaez    | 2459487 | walter.lozano@correounivalle.edu.co    |
 | [Estudiante 3]          |         |                                        |
 
 **Obligatorio:** editar esta tabla con los datos reales de todos los integrantes.
